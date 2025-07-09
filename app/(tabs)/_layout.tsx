@@ -26,23 +26,28 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: theme.colors.foreground,
         },
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          title: "Playlist",
+          tabBarIcon: ({ color }) => <TabBarIcon name="music" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="player/[songId]"
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="paper-plane" color={color} />,
+          title: "Player",
+          tabBarIcon: ({ color }) => <TabBarIcon name="play" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color }) => <TabBarIcon name="gear" color={color} />,
         }}
       />
     </Tabs>
