@@ -1,27 +1,20 @@
 import { Text, TextProps } from "react-native";
 import React from "react";
-import { StyleSheet } from "react-native-unistyles";
+import { StyleSheet, type UnistylesVariants } from "react-native-unistyles";
 
-export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
-  type?: "default" | "title" | "defaultSemiBold" | "subtitle" | "link";
-};
+export type ThemedTextProps = TextProps & UnistylesVariants<typeof styles>;
 
 export default function ThemeText({
   style,
-  lightColor,
-  darkColor,
-  type = "default",
+
+  type,
   ...props
 }: ThemedTextProps) {
   styles.useVariants({ type });
-  return (
-    <Text style={[styles.textColor(lightColor, darkColor), styles.textType]} {...props} />
-  );
+  return <Text style={[styles.textColor, styles.textType]} {...props} />;
 }
 
-const styles = StyleSheet.create((theme, rt) => ({
+const styles = StyleSheet.create((theme) => ({
   textType: {
     variants: {
       type: {
@@ -46,12 +39,16 @@ const styles = StyleSheet.create((theme, rt) => ({
         link: {
           lineHeight: 30,
           fontSize: 16,
-          color: "#0a7ea4",
+          color: theme.colors.link,
         },
       },
     },
   },
-  textColor: (lightColor?: string, darkColor?: string) => ({
-    color: rt.colorScheme === "dark" ? darkColor : lightColor,
-  }),
+  textColor: {
+    color: theme.colors.typography,
+  },
+
+  // textColor: (lightColor?: string, darkColor?: string) => ({
+  //   color: rt.colorScheme === "dark" ? darkColor : lightColor,
+  // }),
 }));
