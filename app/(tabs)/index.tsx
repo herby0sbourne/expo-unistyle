@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native-unistyles";
-import { Text, View } from "@/components/Themed";
+import { Text, View } from "react-native";
 
 export default function TabOneScreen() {
   return (
