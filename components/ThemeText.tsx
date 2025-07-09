@@ -4,7 +4,7 @@ import { StyleSheet, type UnistylesVariants } from "react-native-unistyles";
 
 export type ThemedTextProps = TextProps & UnistylesVariants<typeof styles>;
 
-export default function ThemeText({
+export function ThemeText({
   style,
 
   type,
