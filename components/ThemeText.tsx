@@ -10,21 +10,19 @@ export type ThemedTextProps = TextProps &
 
 export function ThemeText({ style, type, bold, dimmed, ...props }: ThemedTextProps) {
   styles.useVariants({ type, bold, dimmed });
-  return <Text style={[styles.textColor, styles.textType]} {...props} />;
+  return <Text style={[styles.textColor, styles.textType, style]} {...props} />;
 }
 
 const styles = StyleSheet.create((theme) => ({
+  textColor: {
+    color: theme.colors.typography,
+  },
   textType: {
     variants: {
       type: {
         default: {
           fontSize: 16,
           lineHeight: 24,
-        },
-        defaultSemiBold: {
-          fontSize: 16,
-          lineHeight: 24,
-          fontWeight: "600",
         },
         title: {
           fontSize: 32,
@@ -33,12 +31,11 @@ const styles = StyleSheet.create((theme) => ({
         },
         subtitle: {
           fontSize: 20,
-          fontWeight: "bold",
         },
         link: {
           lineHeight: 30,
           fontSize: 16,
-          color: theme.colors.link,
+          color: "#0a7ea4",
         },
       },
       bold: {
@@ -52,9 +49,6 @@ const styles = StyleSheet.create((theme) => ({
         },
       },
     },
-  },
-  textColor: {
-    color: theme.colors.typography,
   },
 
   // textColor: (lightColor?: string, darkColor?: string) => ({
