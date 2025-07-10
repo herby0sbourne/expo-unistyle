@@ -22,8 +22,8 @@ export const SettingTile: FC<SettingTileProps> = ({
       <View>
         <ThemeText bold>{settingName}</ThemeText>
         <ThemeText dimmed>{description}</ThemeText>
-        <ThemeText>{settingValue}</ThemeText>
       </View>
+      <ThemeText>{settingValue}</ThemeText>
     </Pressable>
   );
 };
