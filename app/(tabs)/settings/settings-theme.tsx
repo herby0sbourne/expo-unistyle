@@ -1,11 +1,12 @@
 import { ScrollView } from "react-native";
-import { ThemeText } from "@/components/ThemeText";
 import { StyleSheet } from "react-native-unistyles";
+import SettingOptionRadio from "@/components/SettingOptionRadio";
 
 const SettingThemeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <ThemeText type="title">SettingThemeScreen</ThemeText>
+      <SettingOptionRadio label="System" isSelected={false} onPess={() => {}} />
+      <SettingOptionRadio label="User" isSelected={false} onPess={() => {}} />
     </ScrollView>
   );
 };
@@ -13,7 +14,8 @@ const SettingThemeScreen = () => {
 const styles = StyleSheet.create((theme, rt) => ({
   container: {
     flex: 1,
-    marginTop: rt.insets.top,
+    gap: theme.gap(2),
+    paddingTop: theme.gap(2),
     paddingHorizontal: theme.gap(2),
   },
 }));
