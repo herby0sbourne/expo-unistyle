@@ -2,15 +2,14 @@ import { Text, TextProps } from "react-native";
 import React from "react";
 import { StyleSheet, type UnistylesVariants } from "react-native-unistyles";
 
-export type ThemedTextProps = TextProps & UnistylesVariants<typeof styles>;
+export type ThemedTextProps = TextProps &
+  UnistylesVariants<typeof styles> & {
+    bold?: boolean;
+    dimmed?: boolean;
+  };
 
-export function ThemeText({
-  style,
-
-  type,
-  ...props
-}: ThemedTextProps) {
-  styles.useVariants({ type });
+export function ThemeText({ style, type, bold, dimmed, ...props }: ThemedTextProps) {
+  styles.useVariants({ type, bold, dimmed });
   return <Text style={[styles.textColor, styles.textType]} {...props} />;
 }
 
@@ -40,6 +39,16 @@ const styles = StyleSheet.create((theme) => ({
           lineHeight: 30,
           fontSize: 16,
           color: theme.colors.link,
+        },
+      },
+      bold: {
+        true: {
+          fontWeight: "bold",
+        },
+      },
+      dimmed: {
+        true: {
+          color: theme.colors.tint,
         },
       },
     },
