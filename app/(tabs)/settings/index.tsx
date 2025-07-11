@@ -11,31 +11,38 @@ const SettingsScreen = () => {
   const systemTheme = UnistylesRuntime.hasAdaptiveThemes;
 
   return (
-    <StyledScrollView contentContainerStyle={styles.scrollView}>
-      <ThemeText type="title">Appearance</ThemeText>
-      <View style={styles.settingContainer}>
-        <SettingTile
-          settingName="Theme"
-          settingValue="Light"
-          description={systemTheme ? "System" : "User"}
-          onPress={() => router.push("/(tabs)/settings/settings-theme")}
-        />
-        <SettingTile
-          settingName="App accent"
-          settingValue="Default"
-          description={"Primary app color"}
-          onPress={() => router.push("/(tabs)/settings/settings-accent")}
-        />
-      </View>
-    </StyledScrollView>
+    <View style={styles.container}>
+      <StyledScrollView contentContainerStyle={styles.scrollView}>
+        <ThemeText type="title">Appearance</ThemeText>
+        <View style={styles.settingContainer}>
+          <SettingTile
+            settingName="Theme"
+            settingValue="Light"
+            description={systemTheme ? "System" : "User"}
+            onPress={() => router.push("/(tabs)/settings/settings-theme")}
+          />
+          <SettingTile
+            settingName="App accent"
+            settingValue="Default"
+            description={"Primary app color"}
+            onPress={() => router.push("/(tabs)/settings/settings-accent")}
+          />
+        </View>
+      </StyledScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create((theme, rt) => ({
-  scrollView: {
+  container: {
     flex: 1,
-    marginTop: rt.insets.top + theme.gap(3),
     backgroundColor: theme.colors.background,
+  },
+  scrollView: {
+    // flex: 1,
+    marginTop: rt.insets.top + theme.gap(3),
+    // backgroundColor: theme.colors.background,
+    // backgroundColor: "pink",
     paddingHorizontal: theme.gap(2),
   },
   settingContainer: {
