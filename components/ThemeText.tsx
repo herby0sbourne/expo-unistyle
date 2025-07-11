@@ -1,4 +1,4 @@
-import { Text, TextProps } from "react-native";
+import { Text, type TextProps } from "react-native";
 import React from "react";
 import { StyleSheet, type UnistylesVariants } from "react-native-unistyles";
 
