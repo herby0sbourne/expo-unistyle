@@ -40,3 +40,4 @@ yarn-error.*
 *.tsbuildinfo
 !/.idea/
 .idea/prettier.xml
+/.idea/
