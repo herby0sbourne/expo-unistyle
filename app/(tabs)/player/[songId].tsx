@@ -16,14 +16,10 @@ const PlayerScreen = () => {
 
   if (!songId || !song) {
     return (
-      <ThemeView>
-        <ThemeText type={"title"}>Look for Inspiration?</ThemeText>
-        <ThemeText type={"title"}>Pick a song from the list</ThemeText>
-        <Button
-          label={"Pick a song"}
-          accent={"banana"}
-          onPress={() => router.replace("/")}
-        />
+      <ThemeView style={[styles.centerContainer, styles.container]}>
+        <ThemeText type="title">Looking for inspiration?</ThemeText>
+        <ThemeText>Pick a song from the playlist</ThemeText>
+        <Button label="Pick a song" accent="banana" onPress={() => router.replace("/")} />
       </ThemeView>
     );
   }

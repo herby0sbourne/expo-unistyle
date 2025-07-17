@@ -2,6 +2,7 @@ import { Pressable, View } from "react-native";
 import { StyleSheet, useUnistyles } from "react-native-unistyles";
 import { FontAwesome6 } from "@expo/vector-icons";
 import React from "react";
+import { useStore } from "@/store";
 
 type IconProps = {
   name: React.ComponentProps<typeof FontAwesome6>;
@@ -14,9 +15,10 @@ function Icon(props: IconProps) {
 }
 
 export default function PlayerControls() {
+  const { preferredAccent } = useStore();
   const { theme } = useUnistyles();
 
-  const accent = theme.colors.accents["banana"];
+  const accent = theme.colors.accents[preferredAccent];
 
   return (
     <View style={styles.actions}>

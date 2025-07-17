@@ -4,14 +4,17 @@ import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import { StyleSheet, UnistylesVariants } from "react-native-unistyles";
 import { useAnimatedVariantColor } from "react-native-unistyles/reanimated";
 import { ThemeText } from "./ThemeText";
+import { useStore } from "@/store";
 
 interface ButtonProps extends UnistylesVariants<typeof styles> {
   label: string;
+
   onPress(): void;
 }
 
 const Button: FC<ButtonProps> = ({ label, onPress, accent }) => {
-  styles.useVariants({ accent: accent });
+  const { preferredAccent } = useStore();
+  styles.useVariants({ accent: accent ?? preferredAccent });
 
   const color = useAnimatedVariantColor(styles.buttonColor, "backgroundColor");
   const animatedStyle = useAnimatedStyle(() => {

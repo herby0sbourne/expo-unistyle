@@ -5,12 +5,15 @@ import { StyleSheet, useUnistyles } from "react-native-unistyles";
 
 import Button from "@/components/Button";
 import { ThemeText } from "@/components/ThemeText";
+import { useStore } from "@/store";
 
 const SettingsAccentScreen = () => {
   const { theme } = useUnistyles();
+  const { preferredAccent, setPreferredAccent } = useStore();
   const allAccent = theme.colors.accents;
+
   type Accent = keyof typeof allAccent;
-  const [selectedAccent, setSelectedAccent] = useState<Accent>("banana");
+  const [selectedAccent, setSelectedAccent] = useState<Accent>(preferredAccent);
 
   return (
     <View style={styles.container}>
@@ -35,7 +38,14 @@ const SettingsAccentScreen = () => {
         </View>
       </ScrollView>
       <View style={styles.buttonContainer}>
-        <Button label="Save" accent={selectedAccent} onPress={() => router.back()} />
+        <Button
+          label="Save"
+          accent={selectedAccent}
+          onPress={() => {
+            setPreferredAccent(selectedAccent);
+            router.back();
+          }}
+        />
       </View>
     </View>
   );
