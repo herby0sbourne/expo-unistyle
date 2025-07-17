@@ -19,6 +19,7 @@ const SettingsAccentScreen = () => {
           {Object.entries(allAccent).map(([accentName, accentColor]) => {
             return (
               <Pressable
+                key={accentName}
                 style={styles.item}
                 onPress={() => {
                   setSelectedAccent(accentName as keyof typeof allAccent);
